@@ -16,7 +16,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void add(final Task task) {
-         taskMap.put(task.getId(), task);
+        taskMap.put(task.getId(), task);
+        System.out.println("Задача добавлена! " + task);
     }
 
     @Override

@@ -1,10 +1,11 @@
 package model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Task {
+public abstract class Task {
     private static int idGenerator = 1;
     private final int id;
     private String title;
@@ -20,7 +21,7 @@ public class Task {
         this.title = title;
         this.description = description;
         this.type = type;
-        this.dateTime = LocalDateTime.now();
+        this.dateTime = LocalDate.now().atTime(0, 0);
     }
 
     public int getId() {
@@ -51,9 +52,11 @@ public class Task {
         this.description = description;
     }
 
+    public abstract boolean appearsIn(LocalDate date);
+
     @Override
     public String toString() {
-        return "Task{" +
+        return " {" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
